@@ -13,3 +13,5 @@ Pomodoro timer demonstrating rendering in React.
 - React effects w/ useEffect()
 - React refs w/ useRef()
 - Parent and child components
+- Browser notifications
+- Playing sounds in React.js

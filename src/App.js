@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import ReactNotifications from 'react-browser-notifications';
+import Sound from 'react-sound';
 import './App.css';
 
 function padTime(time) {
@@ -10,12 +11,14 @@ export default function App() {
   const [title, setTitle] = useState('Let the countdown begin!!!');
   const [timeLeft, setTimeLeft] = useState(4);
   const [isRunning, setIsRunning] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const intervalRef = useRef(null);
 
   function startTimer() {
     if (intervalRef.current !== null) return;
     setTitle(`You're doing great!!!`);
     setIsRunning(true);
+    setIsPlaying(false);
     intervalRef.current = setInterval(() => {
       setTimeLeft((timeLeft) => {
         if (timeLeft >= 1) {
@@ -23,7 +26,9 @@ export default function App() {
         }
         ReactNotifications.n.supported() && resetTimer();
         showNotifications();
+        setIsPlaying(true);
         setIsRunning(false);
+
         return 0;
       });
     }, 1000);
@@ -48,7 +53,9 @@ export default function App() {
   function showNotifications() {
     // If the Notifications API is supported by the browser
     // then show the notification
-    if (ReactNotifications.n.supported()) ReactNotifications.n.show();
+    if (ReactNotifications.n.supported()) {
+      ReactNotifications.n.show();
+    }
   }
 
   function handleNotificationClick(event) {
@@ -69,6 +76,11 @@ export default function App() {
         tag="abcdef"
         timeout="5000"
         onClick={(event) => handleNotificationClick(event)}
+      />
+      <Sound
+        url="https://my-s3-uploads103811-dev.s3.amazonaws.com/mixkit-bell-notification-933.wav"
+        playStatus={isPlaying ? Sound.status.PLAYING : Sound.status.STOPPED}
+        playFromPosition={0 /* in milliseconds */}
       />
       <h2>{title}</h2>
 
