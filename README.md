@@ -18,5 +18,6 @@ Pomodoro timer demonstrating rendering in React.
 
 ### To-do
 
-- [ ] Add an input for the user to enter how many minutes they want their Pomodoro to last.
+- [x] Add an input for the user to enter how many minutes they want their Pomodoro to last.
 - [ ] Add a counter that keeps track of how many Pomodoros the user has done, and store it in localStorage to persist data.
+- [ ] Code review and refactor.
