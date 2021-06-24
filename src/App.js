@@ -9,7 +9,8 @@ function padTime(time) {
 
 export default function App() {
   const [title, setTitle] = useState('Let the countdown begin!!!');
-  const [timeLeft, setTimeLeft] = useState(25 * 60);
+  const [pomodoroTime, setPomodoroTime] = useState(25 * 60);
+  const [timeLeft, setTimeLeft] = useState(pomodoroTime);
   const [isRunning, setIsRunning] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const intervalRef = useRef(null);
@@ -46,7 +47,7 @@ export default function App() {
     clearInterval(intervalRef.current);
     intervalRef.current = null;
     setTitle('Ready to go another round?');
-    setTimeLeft(25 * 60);
+    setTimeLeft(pomodoroTime);
     setIsRunning(false);
   }
 
@@ -62,6 +63,14 @@ export default function App() {
     // Sound notification here
     this.n.close(event.target.tag);
   }
+
+  function handlePomodoroChange(value) {
+    let userTime = parseInt(value.target.value) * 60;
+    setPomodoroTime(userTime);
+    setTimeLeft(userTime);
+  }
+
+  const pomodoroTimeMinutes = padTime(Math.floor(pomodoroTime / 60));
 
   const minutes = padTime(Math.floor(timeLeft / 60));
   const seconds = padTime(timeLeft - minutes * 60);
@@ -83,6 +92,20 @@ export default function App() {
         playFromPosition={0 /* in milliseconds */}
       />
       <h2>{title}</h2>
+
+      <div className="time">
+        <label className="time-label">
+          Pomodoro Time{' '}
+          <input
+            type="number"
+            min="0"
+            step="1"
+            value={pomodoroTimeMinutes}
+            className="time__input"
+            onChange={handlePomodoroChange}
+          />
+        </label>
+      </div>
 
       <div className="timer">
         <span>{minutes}</span>
