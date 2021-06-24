@@ -15,3 +15,8 @@ Pomodoro timer demonstrating rendering in React.
 - Parent and child components
 - Browser notifications
 - Playing sounds in React.js
+
+### To-do
+
+[ ] Add an input for the user to enter how many minutes they want their Pomodoro to last.
+[ ] Add a counter that keeps track of how many Pomodoros the user has done, and store it in localStorage to persist data.
