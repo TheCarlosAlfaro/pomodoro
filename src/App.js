@@ -58,6 +58,11 @@ export default function App() {
     setIsRunning(false);
   }
 
+  function resetCount() {
+    setPomodoroCount(0);
+    resetTimer();
+  }
+
   function showNotifications() {
     // If the Notifications API is supported by the browser
     // then show the notification
@@ -126,7 +131,10 @@ export default function App() {
         <button onClick={resetTimer}>Reset</button>
       </div>
       <div className="pomodoro-counter">
-        <span>Total Pomodoros:</span> <span>{pomodoroCount}</span>
+        <span>Total Pomodoros:</span> <span>{pomodoroCount} </span>
+        <button className="reset-count__button" onClick={resetCount}>
+          Reset Count
+        </button>
       </div>
     </div>
   );

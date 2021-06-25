@@ -49,6 +49,27 @@ h2 {
   transition: 0.3s ease all;
 }
 
+.reset-count__button {
+  outline: none;
+  border: none;
+  font-size: 18px;
+  background: #5b85aa;
+  color: #e1bb80;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: 0.3s ease all;
+}
+
+.reset-count__button:hover {
+  border-radius: 10px;
+  background: #d8d4f2;
+  color: #5b85aa;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
 .buttons button:hover {
   border-radius: 10px;
   background: #d8d4f2;
