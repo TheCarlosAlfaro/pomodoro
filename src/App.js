@@ -10,7 +10,7 @@ function padTime(time) {
 
 export default function App() {
   const [title, setTitle] = useState('Let the countdown begin!!!');
-  const [pomodoroTime, setPomodoroTime] = useState(3);
+  const [pomodoroTime, setPomodoroTime] = useState(25 * 60);
   const [timeLeft, setTimeLeft] = useState(pomodoroTime);
   const [isRunning, setIsRunning] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
