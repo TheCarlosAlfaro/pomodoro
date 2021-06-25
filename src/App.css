@@ -61,6 +61,11 @@ h2 {
   margin-right: 10px;
 }
 
+.time,
+.pomodoro-counter {
+  padding-top: 20px;
+}
+
 @media (max-width: 780px) {
   h2 {
     font-size: 22px;

@@ -9292,6 +9292,11 @@ react-sound@^1.2.0:
     prop-types "^15.5.7"
     soundmanager2 "^2.97.20170602"
 
+react-use-window-sessionstorage@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/react-use-window-sessionstorage/-/react-use-window-sessionstorage-1.0.9.tgz#7f9f3a8926cd2ac572c8800346dd1625602f61d9"
+  integrity sha512-rk2QONXf9Lzxt0G77muKxd5nH4wFNjWWBFVH4VZWHAvIExeZywHUFWoIAr9G6ymg9uV7yxiM8fBz7Om3NgaZ0g==
+
 react@^16.2.0:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"

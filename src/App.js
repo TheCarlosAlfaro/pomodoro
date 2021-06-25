@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import ReactNotifications from 'react-browser-notifications';
 import Sound from 'react-sound';
+import { useSessionStorageNumber } from 'react-use-window-sessionstorage';
 import './App.css';
 
 function padTime(time) {
@@ -9,10 +10,15 @@ function padTime(time) {
 
 export default function App() {
   const [title, setTitle] = useState('Let the countdown begin!!!');
-  const [pomodoroTime, setPomodoroTime] = useState(25 * 60);
+  const [pomodoroTime, setPomodoroTime] = useState(3);
   const [timeLeft, setTimeLeft] = useState(pomodoroTime);
   const [isRunning, setIsRunning] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const defaultPomodoroCount = 0;
+  const [pomodoroCount, setPomodoroCount] = useSessionStorageNumber(
+    'pomodoros',
+    defaultPomodoroCount
+  );
   const intervalRef = useRef(null);
 
   function startTimer() {
@@ -29,6 +35,7 @@ export default function App() {
         showNotifications();
         setIsPlaying(true);
         setIsRunning(false);
+        setPomodoroCount(pomodoroCount + 1);
 
         return 0;
       });
@@ -117,6 +124,9 @@ export default function App() {
         {!isRunning && <button onClick={startTimer}>Start</button>}
         {isRunning && <button onClick={stopTimer}>Stop</button>}
         <button onClick={resetTimer}>Reset</button>
+      </div>
+      <div className="pomodoro-counter">
+        <span>Total Pomodoros:</span> <span>{pomodoroCount}</span>
       </div>
     </div>
   );
